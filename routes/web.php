@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomepageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,21 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','HomepageController@index')->name('homepage');
+Route::get('/',[HomepageController::class,'index'])->name('homepage');
 
-Route::get('/Emre',function (){
-   return "Emre Alkan";
-});
+Route::view('/kategori','kategori');
+Route::view('/urun','urun');
+Route::view('/sepet','sepet');
 
-Route::get('api/v1/merhaba',function (){
-   return ['mesaj'=>'Emre Alkan:)'];
-});
 
-Route::get('/urun/{urunadi}/{id?}',function ($urunadi,$id=0){
-    return "Ürün adi: $urunadi /
-            Ürün id : $id";
-})->name('urun-detay');
-
-Route::get('/kampanya',function (){
-   return redirect()->route('urun-detay',['urunadi'=>'elma','id'=>5]);
-});
