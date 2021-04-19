@@ -4,23 +4,36 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Kullanici extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = "kullanici";
     protected $fillable = [
-        'name',
+        'adsoyad',
         'email',
-        'password',
+        'sifre',
+        'aktivasyon_anahtar',
+        'aktif_mi'
     ];
+
+    const CREATED_AT = 'olusturma_tarihi';
+    const UPDATED_AT = 'guncelleme_tarihi';
+    const DELETED_AT ='silinme_tarihi';
+
+    public function getAuthPassword(): string
+    {
+        return $this->sifre;
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,7 +42,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'aktivasyon_anahtar    ',
     ];
 
     /**

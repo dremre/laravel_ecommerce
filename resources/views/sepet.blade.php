@@ -16,7 +16,7 @@
                     <td colspan="5">Henüz sepette ürün yok</td>
                 </tr>
                 <tr>
-                    <td> <img src="http://lorempixel.com/120/100/food/2"> Ürün adı</td>
+                    <td> <img src="https://via.placeholder.com/120x100?text=UrunResmi"> Ürün adı</td>
                     <td>18.99</td>
                     <td>
                         <a href="#" class="btn btn-xs btn-default">-</a>
