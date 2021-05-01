@@ -7,6 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Oturum Aç</div>
                     <div class="panel-body">
+
                         @if(count($errors)>0)
                             <div class="alert alert-danger">
                                 <ul>
@@ -17,6 +18,7 @@
 
                             </div>
                         @endif
+                        @include('layouts.partials.alert')
                         <form class="form-horizontal" role="form" method="POST" action="{{route('kullanici.oturumac')}}">
                             {{csrf_field()}}
 

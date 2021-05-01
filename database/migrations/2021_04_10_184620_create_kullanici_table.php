@@ -20,6 +20,7 @@ class CreateKullaniciTable extends Migration
             $table->string('sifre',150);
             $table->string('aktivasyon_anahtar',60)->nullable();
             $table->boolean('aktif_mi')->default(0);
+            $table->boolean('yonetici_mi')->default(0);
             $table->timestamp('olusturma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('guncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('silinme_tarihi')->nullable();

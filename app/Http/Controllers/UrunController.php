@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Urun;
 
 class UrunController extends  Controller{
-    public function index($slug_urunad){
-        $urun = Urun::where('slug',$slug_urunad)->firstOrFail();
+    public function index($slug_urunadi){
+        $urun = Urun::where('slug',$slug_urunadi)->firstOrFail();
         return view('urun',compact('urun'));
     }
 

@@ -22,6 +22,7 @@ class CreateKategoriUrunTable extends Migration
             $table->foreign('urun_id')->references('id')->on('urun')->onDelete('cascade');
 
         });
+
     }
 
     /**

@@ -35,6 +35,12 @@ class Kullanici extends Authenticatable
         return $this->sifre;
     }
 
+    public function detay()
+    {
+
+        return $this->hasOne(KullaniciDetay::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -42,7 +48,7 @@ class Kullanici extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'aktivasyon_anahtar    ',
+        'aktivasyon_anahtar',
     ];
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUrunTable extends Migration
+class CreateSepetUrunTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateUrunTable extends Migration
      */
     public function up()
     {
-        Schema::create('urun', function (Blueprint $table) {
+        Schema::create('sepet_urun', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug',150);
-            $table->string('urun_ad',150);
-            $table->string('urun_gorsel',250)->nullable();
-            $table->text('aciklama');
-            $table->decimal('fiyati',9);
+            $table->integer('sepet_id')->unsigned();
+            $table->integer('urun_id')->unsigned();
+            $table->integer('adet');
+            $table->decimal('fiyati',5,2);
+            $table->string('durum',30);
             $table->timestamp('olusturma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('guncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('silinme_tarihi')->nullable();
+            $table->foreign('sepet_id')->references('id')->on('sepet')->onDelete('cascade');
+            $table->foreign('urun_id')->references('id')->on('urun')->onDelete('cascade');
         });
     }
 
@@ -33,6 +35,6 @@ class CreateUrunTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('urun');
+        Schema::dropIfExists('sepet_urun');
     }
 }
